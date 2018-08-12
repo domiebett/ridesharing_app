@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="admin">
+  <h2>Admin Dashboard > Users</h2>
+  
+  <table class="admin_table">
+    <thead>
+      <tr>
+        <th colspan="1">Name</th>
+        <th colspan="1">Email</th>
+        <th colspan="1">Created At</th>
+        <th colspan="2">Controls</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.first_name %> <%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at %></td>
+          <td><%= link_to 'Show', "/admin/users/#{user.id}" %></td>
+          <td><%= link_to 'Destroy', "/admin/users/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
