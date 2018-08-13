@@ -1,3 +1,7 @@
+[![CircleCI](https://circleci.com/gh/domiebett/ridesharing_app.svg?style=svg)](https://circleci.com/gh/domiebett/ridesharing_app)
+[![Coverage Status](https://coveralls.io/repos/github/domiebett/ridesharing_app/badge.svg?branch=develop)](https://coveralls.io/github/domiebett/ridesharing_app?branch=develop)
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
