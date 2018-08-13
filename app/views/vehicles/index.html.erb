@@ -1,0 +1,32 @@
+
+<h1>Vehicles</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="1">Vehicle Model</th>
+      <th colspan="1">License plate</th>
+      <th colspan="1">Capacity</th>
+      <th colspan="1">Controls</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= vehicle.vehicle_model %></td>
+        <td><%= vehicle.license_plate %></td>
+        <td><%= vehicle.capacity %></td>
+        <td>
+          <%= link_to 'Show', vehicle %>
+          <%= link_to 'Edit', edit_vehicle_path(vehicle) %>
+          <%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle', new_vehicle_path %>

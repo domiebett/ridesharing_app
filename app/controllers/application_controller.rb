@@ -20,8 +20,12 @@ class ApplicationController < ActionController::Base
   end
 
   def enforce_admin_only_access
-    unless current_user.is_admin?
+    unless current_user.is_admin
       redirect_to '/', alert: 'You are not authorized for this functionality'
     end
+  end
+
+  def owner_or_admin?
+    @requester_is_admin = current_user.is_admin
   end
 end

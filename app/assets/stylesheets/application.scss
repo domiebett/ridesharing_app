@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+$app-blue: #424284;
 
 @font-face {
   font-family: HarmoniaRegular;
@@ -23,6 +24,10 @@
   font-family: HarmoniaRegular, Verdana, cursive;
   transition: 0.5s ease-in-out;
 }
+
+/************************************
+              Toasts
+*************************************/
 
 .toast {
   position: fixed;
@@ -61,6 +66,97 @@
   }
 }
 
+/************************************
+              Forms
+*************************************/
+
+.form_container {
+  margin: 0 auto;
+  width: 70vw;
+  height: auto;
+}
+
+input[type="submit"], button {
+  box-shadow: 0 0 5px gray;
+  border: none;
+  background-color: white;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    background-color: $app-blue;
+    box-shadow: none;
+  }
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border-width: 0 0 3px 0;
+  border-color: rgba(127, 127, 127, 0.3);
+  font-size: 18px;
+  color: rgb(44, 44, 44);
+  &:focus {
+    border-color: $app-blue;
+  }
+}
+
+/************************************
+              Tables
+*************************************/
+
+.table {
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  td {
+    padding: 10px;
+  }
+  tbody {
+    tr {
+      box-shadow: 0 0 5px gray;
+      cursor: pointer;
+      transition: 0.2s ease-out;
+      &:hover {
+        box-shadow: 0 0 10px gray;
+      }
+      td {
+        text-align: center;
+      }
+    }
+  }
+}
+
+/************************************
+              Links
+*************************************/
+a {
+  color: $app-blue;
+  text-decoration: none;
+  background-color: white;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: white;
+    color: $app-blue;
+  }
+
+  &:visited {
+    color: $app-blue;
+  }
+}
+
+/************************************
+              Animations
+*************************************/
 @keyframes disappear {
   0% {
     visibility: visible;

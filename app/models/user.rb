@@ -5,4 +5,14 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :vehicles
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def create_vehicle(params)
+    vehicles.build(params)
+  end
 end
