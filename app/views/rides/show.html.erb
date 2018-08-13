@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @ride.origin %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @ride.destination %>
+</p>
+
+<p>
+  <strong>Departure date:</strong>
+  <%= @ride.departure_date %>
+</p>
+
+<p>
+  <strong>Departure time:</strong>
+  <%= @ride.departure_time %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ride.description %>
+</p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @ride.vehicle.vehicle_model %>
+</p>
+
+<p>
+  <strong>Vehicle License Plates:</strong>
+  <%= @ride.vehicle.license_plate %>
+</p>
+
+<p>
+  <strong>User Name:</strong>
+  <%= @ride.vehicle.user&.full_name %>
+</p>
+
+<%= link_to 'Edit', edit_ride_path(@ride) %> |
+<%= link_to 'Back', rides_path %>

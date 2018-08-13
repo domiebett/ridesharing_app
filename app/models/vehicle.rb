@@ -3,4 +3,5 @@ class Vehicle < ApplicationRecord
   validates :license_plate, uniqueness: true
 
   belongs_to :user
+  has_many :rides, dependent: :nullify
 end

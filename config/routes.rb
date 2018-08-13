@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rides
   resources :vehicles
   root 'home#index', as: 'home_index'
 
