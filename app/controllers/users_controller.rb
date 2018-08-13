@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show update destroy]
   before_action :enforce_admin_only_access
+  before_action :set_user, only: %i[show update destroy]
 
   # GET /users
   # GET /users.json

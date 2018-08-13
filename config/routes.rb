@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :vehicles
   root 'home#index', as: 'home_index'
 
   devise_for :users

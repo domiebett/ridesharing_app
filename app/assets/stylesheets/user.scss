@@ -1,39 +1,11 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$app-blue: rgba(50, 52, 160, 1);
+$app-blue: #424284;
+
 .admin {
   width: 90%;
   margin-left: 10%;
-  .admin_table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-    td {
-      padding: 10px;
-    }
-    tbody {
-      tr {
-        box-shadow: 0 0 5px gray;
-        cursor: pointer;
-        a {
-          color: $app-blue;
-          text-decoration: none;
-        }
-        &:hover {
-          background-color: $app-blue;
-          color: white;
-          a {
-            color: white;
-            text-decoration: underline;
-          }
-        }
-        td {
-          text-align: center;
-        }
-      }
-    }
-  }
 }
 
 .user {
@@ -53,7 +25,7 @@ $app-blue: rgba(50, 52, 160, 1);
     }
     .form_holder {
       width: 50%;
-      height: calc(100%-20px);
+      height: calc(100% - 20px);
       background-color: white;
       float: right;
       padding: 10px;
@@ -64,37 +36,10 @@ $app-blue: rgba(50, 52, 160, 1);
     .field {
       margin: 10px 0 20px 0;
     }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      width: 90%;
-      height: 30px;
-      outline: none;
-      border-width: 0 0 3px 0;
-      border-color: rgba(27, 27, 27, 0.5);
-      font-size: 18px;
-      color: rgb(44, 44, 44);
-      &:focus {
-        border-color: $app-blue;
-      }
-    }
 
     input[type="submit"] {
       min-width: 45%;
       margin-top: 20px;
-      box-shadow: 0 0 5px gray;
-      border: none;
-      background-color: white;
-      border-radius: 0;
-      padding: 10px;
-      font-size: 1em;
-      cursor: pointer;
-
-      &:hover {
-        color: white;
-        background-color: $app-blue;
-        box-shadow: none;
-      }
     }
   }
 
