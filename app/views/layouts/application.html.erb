@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <% if notice %>
+      <p class="toast toast-info"><%= notice %></p>
+    <% end %>
+
+    <% if alert %>
+      <p class="toast toast-warning"><%= alert %></p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
