@@ -13,4 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery/dist/jquery
+//= require pickadate/lib/picker
+//= require date_picker
 //= require_tree .

@@ -1,0 +1,74 @@
+<nav>
+  <div class="logo">
+    RideShare
+  </div>
+
+  <div class="options">
+    <ul>
+      <li class="offer_ride">
+        <%= link_to raw("<i class='fa fa-taxi'></i> Offer Ride"), new_ride_url %>
+      </li>
+
+      <li class="find_ride">
+        <%= link_to raw("<i class='fa fa-search'></i> Find Ride"), new_ride_url %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="user">
+    <ul>
+      <li> <%= link_to (current_user ? current_user.full_name : "Sign In"), (current_user ? '' : new_user_session_url) %> </li>
+    </ul>
+
+    <div class="user_options">
+      <ul>
+        <li>Log out</li>
+      </ul>
+      Logout
+    </div>
+  </div>
+</nav>
+
+<div class="sidebar">
+  <% if current_user %>
+    <div class="item <%= current_class? '/' %>" title="Homepage">
+      <a href="/"><i class="fa fa-home"></i></a>
+      <span>Home</span>
+    </div>
+    <div class="item <%= current_class? '/rides' %>" title="Rides">
+      <a href='/rides'><i class="fa fa-taxi"></i></a>
+      <span>Rides</span>
+    </div>
+    <div class="item <%= current_class? '/vehicles' %>" title="Cars">
+      <a href='/vehicles'><i class="fa fa-car"></i></a>
+      <span>Cars</span>
+    </div>
+<!--    <div class="item" title="Settings">-->
+<!--      <i class="fa fa-cogs"></i>-->
+<!--      <span>Settings</span>-->
+<!--    </div>-->
+    <% if current_user.is_admin %>
+      <div class="item" title="Users">
+        <a href='/admin/users'><i class="fa fa-user"></i></a>
+        <span>Users</span>
+      </div>
+    <% end %>
+
+    <div class="item logout" title="Logout">
+      <a><i class="fa fa-sign-out"></i></a>
+      <%= button_to '', destroy_user_session_path, method: :delete %>
+      <span>Logout</span>
+    </div>
+
+  <% else %>
+    <div class="item <%= current_class? '/users/sign_in' %>" title="Cars">
+      <a href='/users/sign_in'><i class="fa fa-sign-in"></i></a>
+      <span>Sign in</span>
+    </div>
+
+    <div class="item <%= current_class? '/users/sign_up' %>" title="Cars">
+      <a href='/users/sign_up'><i class="fa fa-user-plus"></i></a>
+      <span>Sign up</span>
+    </div>
+  <% end %>
+</div>

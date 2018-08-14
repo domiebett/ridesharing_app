@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/ridesharing_app
     docker:
-      - image: circleci/ruby:2.5.1
+      - image: circleci/ruby:2.5.1-node
         environment:
           PGHOST: localhost
           PGUSER: bett
@@ -13,7 +13,6 @@ jobs:
           POSTGRES_USER: bett
           POSTGRES_DB: rideshare_test
           POSTGRES_PASSWORD: ""
-      - image: circleci/node:10.8.0-browsers
     steps:
       - checkout
 
@@ -22,7 +21,8 @@ jobs:
         name: Restore bundle cache
         key: ridesharing_app-{{ checksum "Gemfile.lock" }}
 
-      - run: sudo apt-get install nodejs
+      # Install javascript packages.
+      - run: yarn install
 
       # Bundle install dependencies
       - run: gem install bundler

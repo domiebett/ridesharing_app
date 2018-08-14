@@ -7,17 +7,22 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
-    <% if notice %>
-      <p class="toast toast-info"><%= notice %></p>
-    <% end %>
+    <%= render 'layouts/navigation' %>
 
-    <% if alert %>
-      <p class="toast toast-warning"><%= alert %></p>
-    <% end %>
+    <div class="app_container">
+      <% if notice %>
+        <p class="toast toast-info"><%= notice %></p>
+      <% end %>
 
-    <%= yield %>
+      <% if alert %>
+        <p class="toast toast-warning"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-$app-blue: #424284;
+$app-blue: #4f70b5;
+$bgc: #f2f2f2;
 
 @font-face {
   font-family: HarmoniaRegular;
@@ -23,6 +24,26 @@ $app-blue: #424284;
 * {
   font-family: HarmoniaRegular, Verdana, cursive;
   transition: 0.5s ease-in-out;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: $bgc;
+}
+
+body {
+  padding-left: 70px;
+  padding-top: 55px;
+}
+
+.app_container {
+  height: calc(100vh - 55px);
+  width: calc(100vw - 70px);
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 /************************************
@@ -67,12 +88,162 @@ $app-blue: #424284;
 }
 
 /************************************
+              Navigation
+*************************************/
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 70px;
+  width: calc(100vw - 70px);
+  height: 40px;
+  background-color: $bgc;
+  border-bottom: 2px solid $app-blue;
+  padding: 10px 0 10px 0;
+  display: flex;
+
+  .logo {
+    display: inline-block;
+    color: $app-blue;
+    font-size: 2em;
+    font-weight: 900;
+    padding: 14px;
+  }
+
+  .options {
+    margin-left: 30%;
+
+    li {
+      display: inline-block;
+      text-align: center;
+      a {
+        background-color: $app-blue;
+        padding: 12px 17px 12px 17px;
+        border-radius: 15px;
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .user {
+    float: right;
+    margin-left: auto;
+
+    li {
+      display: inline-block;
+      text-align: center;
+      a {
+        background-color: $app-blue;
+        padding: 12px 17px 12px 17px;
+        color: white;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+    }
+
+    .user_options {
+      display: none;
+    }
+  }
+}
+
+
+/************************************
+              Sidebar
+*************************************/
+
+$sdbgc: #333;
+
+.sidebar {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 100%;
+  padding-top: 100px;
+  background-color: $app-blue;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .11);
+  z-index: 99;
+
+  .item {
+    line-height: 1;
+    font-size: 25px;
+    color: #f2f2f2;
+    cursor: pointer;
+    margin: 10px 4px;
+    text-align: center;
+    background-color: $app-blue;
+    border: solid 4px $app-blue;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: all ease-in-out .27s;
+
+    &.logout {
+      position: relative;
+
+      input[type="submit"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        background: transparent;
+      }
+    }
+
+    a {
+      background-color: transparent;
+      color: #fff;
+    }
+
+    span {
+      position: absolute;
+      width: 70%;
+      display: none;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    i {
+      padding: 10px;
+    }
+
+    &:hover {
+      text-shadow: 0px 0px 25px #000;
+      span {
+        display: block;
+      }
+    }
+
+    &.active {
+      border-color: $bgc;
+      margin-left: 28px;
+      animation: bounce 1s infinite;
+
+      &:hover {
+        text-shadow: none;
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+/************************************
               Forms
 *************************************/
 
 .form_container {
   margin: 0 auto;
-  width: 70vw;
+  width: 70%;
   height: auto;
 }
 
@@ -193,5 +364,19 @@ a {
     height: 0;
     margin: 0;
     padding: 0;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    margin-left: 18px;
+  }
+
+  50% {
+    margin-left: 28px;
+  }
+
+  100% {
+    margin-left: 18px;
   }
 }
