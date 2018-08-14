@@ -25,7 +25,35 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def owner_or_admin?
-    @requester_is_admin = current_user.is_admin
+  def create_resource(resource)
+    respond_to do |format|
+      if resource.save
+        format.html { redirect_to resource, notice: "#{resource.class} was successfully created." }
+        format.json { render :show, status: :created, location: resource }
+      else
+        format.html { render :new }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_resource(resource, params)
+    respond_to do |format|
+      if resource.update(params)
+        format.html { redirect_to resource, notice: "#{resource.class} was successfully updated." }
+        format.json { render :show, status: :ok, location: resource }
+      else
+        format.html { render :edit }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy_resource(resource, redirect_route)
+    resource.destroy
+    respond_to do |format|
+      format.html { redirect_to redirect_route, notice: "#{resource.class} was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 end

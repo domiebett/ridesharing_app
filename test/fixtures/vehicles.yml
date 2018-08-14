@@ -4,8 +4,10 @@ one:
   vehicle_model: Vehicle One
   license_plate: VHL 100A
   capacity: 4
+  user_id: 1
 
 two:
   vehicle_model: Vehicle Two
   license_plate: VHL 200A
   capacity: 4
+  user_id: 2

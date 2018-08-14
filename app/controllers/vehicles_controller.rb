@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class VehiclesController < ApplicationController
-  before_action :owner_or_admin?
   before_action :set_vehicle, only: %i[show edit update destroy]
 
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = @requester_is_admin ? Vehicle.all : current_user.vehicles
+    @vehicles = current_user.is_admin ? Vehicle.all : current_user.vehicles
   end
 
   # GET /vehicles/1
@@ -27,46 +26,26 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = current_user.create_vehicle(vehicle_params)
 
-    respond_to do |format|
-      if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
-        format.json { render :show, status: :created, location: @vehicle }
-      else
-        format.html { render :new }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource @vehicle
   end
 
   # PATCH/PUT /vehicles/1
   # PATCH/PUT /vehicles/1.json
   def update
-    respond_to do |format|
-      if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vehicle }
-      else
-        format.html { render :edit }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource @vehicle, vehicle_params
   end
 
   # DELETE /vehicles/1
   # DELETE /vehicles/1.json
   def destroy
-    @vehicle.destroy
-    respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    destroy_resource @vehicle, vehicles_url
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_vehicle
-    @vehicle = if @requester_is_admin
+    @vehicle = if current_user.is_admin
                  Vehicle.find(params[:id])
                else
                  current_user.vehicles.find(params[:id])
