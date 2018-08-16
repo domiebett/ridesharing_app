@@ -11,29 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :origin %>
-    <%= form.text_field :origin %>
+  <h4>Journey Info</h4>
+  <div class="inline_field">
+    <div class="field">
+      <%= form.label :origin %>
+      <%= form.text_field :origin, class: :maps_auto_complete,
+                          id: :maps_origin, placeholder: 'Enter a location' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :destination %>
+      <%= form.text_field :destination, class: :maps_auto_complete,
+                          id: :maps_destination, placeholder: 'Enter a location' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :destination %>
-    <%= form.text_field :destination %>
+  <hr>
+
+  <h4>Date Info</h4>
+  <div class="inline_field">
+    <div class="field">
+      <%= form.label :departure_date %>
+      <%= form.text_field :departure_date, id: :ride_departure_date,
+                          class: :date_picker, placeholder: 'Click to select a date.',
+                          read_only: :true %>
+    </div>
+
+    <div class="field">
+      <%= form.label :departure_time %>
+      <%= form.text_field :departure_time, id: :ride_departure_time,
+                          class: :time_picker, placeholder: 'Click to select a time', read_only: :true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :departure_date %>
-    <%= form.date_select :departure_date %>
-  </div>
+  <hr>
 
-  <div class="field">
-    <%= form.label :departure_time %>
-    <%= form.time_select :departure_time %>
-  </div>
-
+  <h4>Description</h4>
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, placeholder: 'Enter a description' %>
   </div>
 
   <div class="field">

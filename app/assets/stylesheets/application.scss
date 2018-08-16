@@ -9,12 +9,17 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
+ *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap-datepicker/dist/css/bootstrap-datepicker
+ *= require timepicker/jquery.timepicker
  */
+
 $app-blue: #4f70b5;
+$app-blue-transparent: rgba(79, 112, 181, 0.18);
 $bgc: #f2f2f2;
+$app-dark: #2c3e50;
 
 @font-face {
   font-family: HarmoniaRegular;
@@ -34,13 +39,16 @@ html, body {
 
 body {
   padding-left: 70px;
-  padding-top: 55px;
+  padding-top: 90px;
 }
 
 .app_container {
-  height: calc(100vh - 55px);
-  width: calc(100vw - 70px);
-  padding: 0;
+  height: calc(100vh - 100px);
+  width: calc(100vw - 80px);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 0 0 10px 0;
   margin: 0;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -88,253 +96,73 @@ body {
 }
 
 /************************************
-              Navigation
+              Links
 *************************************/
 
-nav {
-  position: fixed;
-  top: 0;
-  left: 70px;
-  width: calc(100vw - 70px);
-  height: 40px;
-  background-color: $bgc;
-  border-bottom: 2px solid $app-blue;
-  padding: 10px 0 10px 0;
-  display: flex;
-
-  .logo {
-    display: inline-block;
-    color: $app-blue;
-    font-size: 2em;
-    font-weight: 900;
-    padding: 14px;
-  }
-
-  .options {
-    margin-left: 30%;
-
-    li {
-      display: inline-block;
-      text-align: center;
-      a {
-        background-color: $app-blue;
-        padding: 12px 17px 12px 17px;
-        border-radius: 15px;
-        color: white;
-        text-decoration: none;
-      }
-    }
-  }
-
-  .user {
-    float: right;
-    margin-left: auto;
-
-    li {
-      display: inline-block;
-      text-align: center;
-      a {
-        background-color: $app-blue;
-        padding: 12px 17px 12px 17px;
-        color: white;
-        text-decoration: none;
-        margin-right: 20px;
-      }
-    }
-
-    .user_options {
-      display: none;
-    }
-  }
-}
-
-
-/************************************
-              Sidebar
-*************************************/
-
-$sdbgc: #333;
-
-.sidebar {
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 70px;
-  height: 100%;
-  padding-top: 100px;
-  background-color: $app-blue;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .11);
-  z-index: 99;
-
-  .item {
-    line-height: 1;
-    font-size: 25px;
-    color: #f2f2f2;
-    cursor: pointer;
-    margin: 10px 4px;
-    text-align: center;
-    background-color: $app-blue;
-    border: solid 4px $app-blue;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    transition: all ease-in-out .27s;
-
-    &.logout {
-      position: relative;
-
-      input[type="submit"] {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        border: none;
-        box-shadow: none;
-        outline: none;
-        background: transparent;
-      }
-    }
-
-    a {
-      background-color: transparent;
-      color: #fff;
-    }
-
-    span {
-      position: absolute;
-      width: 70%;
-      display: none;
-      font-size: 15px;
-      text-align: center;
-    }
-
-    i {
-      padding: 10px;
-    }
+a {
+  &.delete_link {
+    color: red;
 
     &:hover {
-      text-shadow: 0px 0px 25px #000;
-      span {
-        display: block;
-      }
-    }
-
-    &.active {
-      border-color: $bgc;
-      margin-left: 28px;
-      animation: bounce 1s infinite;
-
-      &:hover {
-        text-shadow: none;
-        span {
-          display: none;
-        }
-      }
+      display: block;
+      border: 1px solid red;
+      padding: 5px;
     }
   }
-}
 
-
-/************************************
-              Forms
-*************************************/
-
-.form_container {
-  margin: 0 auto;
-  width: 70%;
-  height: auto;
-}
-
-input[type="submit"], button {
-  box-shadow: 0 0 5px gray;
-  border: none;
-  background-color: white;
-  border-radius: 0;
-  padding: 10px;
-  font-size: 1em;
-  cursor: pointer;
-
-  &:hover {
-    color: white;
-    background-color: $app-blue;
-    box-shadow: none;
-  }
-}
-
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="email"] {
-  width: 100%;
-  height: 40px;
-  outline: none;
-  border-width: 0 0 3px 0;
-  border-color: rgba(127, 127, 127, 0.3);
-  font-size: 18px;
-  color: rgb(44, 44, 44);
-  &:focus {
-    border-color: $app-blue;
-  }
-}
-
-textarea {
-  width: 100%;
-  height: 50px;
-  outline: none;
-  border-width: 0 0 3px 0;
-  border-color: rgba(127, 127, 127, 0.3);
-  font-size: 18px;
-  color: rgb(44, 44, 44);
-  &:focus {
-    border-color: $app-blue;
+  &.edit_link {
+    color: $app-blue;
   }
 }
 
 /************************************
               Tables
 *************************************/
+.index_container {
+  margin: 0 auto;
+  width: 90%;
+}
 
 .table {
   margin: 0 auto;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 15px;
-  td {
-    padding: 10px;
+  td, th{
+    padding: 15px 10px 15px 10px !important;
+    text-align: center;
   }
+
+  th {
+    border: none !important;
+  }
+
   tbody {
     tr {
-      box-shadow: 0 0 5px gray;
+      border: 1px solid $app-blue !important;
+      //box-shadow: 0 0 5px $app-blue;
       cursor: pointer;
       transition: 0.2s ease-out;
       &:hover {
-        box-shadow: 0 0 10px gray;
+        //box-shadow: 0 0 10px gray;
       }
       td {
         text-align: center;
+        border-style: solid;
+        border-color: $app-blue !important;
+        border-width: 2px 0;
+
+        &:first-child {
+          border-left-width: 2px;
+          border-radius: 5px 0 0 5px;
+        }
+
+        &:last-child {
+          border-right-width: 2px;
+          border-radius: 0 5px 5px 0;
+        }
       }
     }
-  }
-}
-
-/************************************
-              Links
-*************************************/
-a {
-  color: $app-blue;
-  text-decoration: none;
-  background-color: white;
-
-  &:hover {
-    text-decoration: underline;
-    background-color: white;
-    color: $app-blue;
-  }
-
-  &:visited {
-    color: $app-blue;
   }
 }
 
@@ -369,7 +197,7 @@ a {
 
 @keyframes bounce {
   0% {
-    margin-left: 18px;
+    margin-left: 13px;
   }
 
   50% {
@@ -377,6 +205,6 @@ a {
   }
 
   100% {
-    margin-left: 18px;
+    margin-left: 13px;
   }
 }
