@@ -1,0 +1,216 @@
+$app-blue: #4f70b5;
+$app-blue-transparent: rgba(79, 112, 181, 0.18);
+$bgc: #f2f2f2;
+$app-dark: #2c3e50;
+
+
+/************************************
+              Navigation
+*************************************/
+.navigation {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100vw - 80px)
+}
+
+
+.app_title {
+  text-align: center;
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #222;
+  font-family: cursive;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  height: 40px;
+  margin: auto;
+  position: relative;
+  background-color: #2c3e50;
+  z-index: 7;
+
+  li {
+    float: left;
+    width: 25%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    font-size: 18px;
+    z-index: 9;
+    background: transparent;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+      background: transparent;
+    }
+
+    &:visited {
+      color: white;
+      text-decoration: none;
+      background: transparent;
+    }
+  }
+}
+
+a.active {
+  background-color: #e74c3c;
+  pointer-events: none;
+}
+
+li.slider {
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  z-index: 8;
+  transition: left .4s, background-color .4s;
+}
+
+.menu li:nth-child(1):hover,
+.menu li:nth-child(1):focus,
+.menu li:nth-child(1).active {
+  background-color: #3498db;
+  & ~ .slider {
+    left: 0;
+    background-color: #3498db;
+  }
+}
+
+
+.menu li:nth-child(2):hover,
+.menu li:nth-child(2):focus,
+.menu li:nth-child(2).active {
+  & ~ .slider {
+    left: 25%;
+    background-color: #9b59b6;
+  }
+}
+
+.menu li:nth-child(3):hover,
+.menu li:nth-child(3):focus,
+.menu li:nth-child(3).active {
+  & ~ .slider {
+    left: 50%;
+    background-color: #e67e22;
+  }
+}
+
+.menu li:nth-child(4):hover,
+.menu li:nth-child(4):focus,
+.menu li:nth-child(4).active {
+  & ~ .slider {
+    left: 75%;
+    background-color: #16a085;
+  }
+}
+
+
+/************************************
+              Sidebar
+*************************************/
+
+.sidebar {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  padding-top: 12%;
+  background-color: $app-dark;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .11);
+  z-index: 99;
+
+  .item {
+    line-height: 1;
+    font-size: 40px;
+    color: #f2f2f2;
+    cursor: pointer;
+    margin: 13px 9px;
+    text-align: center;
+    background-color: $app-dark;
+    border: solid 4px $app-dark;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    transition: all ease-in-out .27s;
+
+    &:last-child {
+      margin-top: 100%;
+      margin-bottom: 0;
+    }
+
+    &.logout {
+      position: relative;
+
+      input[type="submit"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        background: transparent;
+      }
+    }
+
+    a {
+      background-color: transparent;
+      color: #fff;
+      font-size: 30px;
+    }
+
+    span {
+      position: absolute;
+      width: 70%;
+      display: none;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    i {
+      padding: 10px;
+    }
+
+    &:hover {
+      text-shadow: 0px 0px 25px #000;
+      span {
+        display: block;
+      }
+    }
+
+    &.active {
+      border-color: $bgc;
+      margin-left: 28px;
+      animation: 1s bounce infinite;
+
+      &:hover {
+        text-shadow: none;
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}

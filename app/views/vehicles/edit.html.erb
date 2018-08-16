@@ -1,8 +1,12 @@
 <div class="form_container">
-  <h1>Editing Vehicle</h1>
+  <header>
+    <h1>Editing Vehicle</h1>
+  </header>
 
-  <%= render 'form', vehicle: @vehicle %>
+  <div class="form_content">
+    <%= render 'form', vehicle: @vehicle %>
 
-  <%= link_to 'Show', @vehicle %> |
-  <%= link_to 'Back', vehicles_path %>
+    <%= link_to 'Show', @vehicle %> |
+    <%= link_to 'Back', vehicles_path %>
+  </div>
 </div>
