@@ -1,3 +1,111 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$app-blue: #4f70b5;
+$app-blue-transparent: rgba(79, 112, 181, 0.18);
+$bgc: #f2f2f2;
+$app-dark: #2c3e50;
+$app-green: #16a085;
+
+.home {
+  padding: 10px;
+  width: 100%;
+
+  .home_title {
+    float: left;
+    width: 50%;
+  }
+
+  .tool_bar {
+    width: 50%;
+    float: right;
+  }
+
+  .home_contents {
+    clear: both;
+  }
+
+  .rides_container {
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  .ride_card {
+    color: $app-dark;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 8px rgba(128, 128, 128, 0.41);
+    border-radius: 2px;
+    padding: 5% 2% 2% 2%;
+
+    .content {
+
+      strong {
+        color: $app-blue;
+      }
+    }
+
+    .other_info {
+      strong {
+        color: $app-blue;
+      }
+    }
+
+    .capacity {
+      position: absolute;
+      top: -5px;
+      right: 10px;
+      border: 1px solid $app-green;
+      background-color: $app-green;
+      color: white;
+      width: auto;
+      font-size: 0.85em;
+
+      span {
+        padding: 10px;
+      }
+    }
+
+    .request_ride {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      border: 3px solid $app-green;
+      border-radius: 50%;
+      background-color: white;
+      background-size: cover;
+      cursor: pointer;
+      transition: 1s ease-in-out;
+
+      &:hover {
+        animation: radiate 1s infinite;
+      }
+
+      img {
+        width: 80%;
+        height: 80%;
+        margin: 10%;
+        padding: 0;
+      }
+    }
+  }
+}
+
+@keyframes radiate {
+  0% {
+    box-shadow: 0 0 5px $app-green;
+  }
+  50% {
+    box-shadow: 0 0 20px $app-green;
+  }
+  100% {
+    box-shadow: 0 0 5px $app-green;
+  }
+}

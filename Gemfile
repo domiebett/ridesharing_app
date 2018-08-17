@@ -40,6 +40,7 @@ gem 'pg'
 gem 'devise'
 gem 'figaro'
 gem 'pickadate-rails'
+gem 'popper_js'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -201,9 +201,8 @@ li.slider {
     }
 
     &.active {
-      border-color: $bgc;
-      margin-left: 28px;
-      animation: 1s bounce infinite;
+      border-color: #3498db;
+      pointer-events: none;
 
       &:hover {
         text-shadow: none;

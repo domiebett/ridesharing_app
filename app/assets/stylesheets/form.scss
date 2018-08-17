@@ -18,28 +18,22 @@ $app-dark: #2c3e50;
 
   header {
     background-color: $app-blue-transparent;
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
   }
 
   .form_content {
     padding: 20px;
   }
+
+  select {
+    transition: 0s;
+  }
 }
 
 input[type="submit"], button {
-  box-shadow: 0 0 5px gray;
-  border: none;
-  background-color: white;
-  border-radius: 0;
-  padding: 10px;
-  font-size: 1em;
   cursor: pointer;
-
-  &:hover {
-    color: white;
-    background-color: $app-blue;
-    box-shadow: none;
-  }
+  float: right;
+  width: 40%;
 }
 
 input[type="text"],

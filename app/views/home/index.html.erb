@@ -1,5 +1,55 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="home">
+  <div class="home_title">
+    <h4>
+      Find a ride...
+    </h4>
+  </div>
+  <div class="tool_bar">
+    <div class="inputs">
+      <%= form_tag do %>
+        <div class="inline_field">
+          <div class="field">
+            <%= text_field_tag :origin, value = '', class: :maps_auto_complete,
+                               id: :maps_origin,
+                               placeholder: 'Origin' %>
+          </div>
+          <div class="field">
+            <%= text_field_tag :destination, value='', class: :maps_auto_complete,
+                               id: :maps_destination,
+                               placeholder: 'Destination' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
+  <div class="home_contents">
+    <div class="rides_container">
+      <% @rides.each do |ride| %>
+        <div class="ride_card">
+          <div class="capacity">
+            <span>Cap: <%= ride.vehicle.capacity %></span>
+          </div>
 
-<%= button_to "Logout", destroy_user_session_path, method: :delete %>
+          <div class="content">
+            <strong>Pick up</strong>: <%= ride.origin%><br>
+            <u>at</u>
+            <em><%= ride.departure_time.strftime("%I:%M %p") %></em>
+            <u>on</u>
+            <em><%= ride.departure_date.strftime("%B %d, %Y") %></em><br>
+            <strong>Destination</strong>: <%= ride.destination %>
+          </div>
+
+          <div class="other_info">
+            <strong>Driver</strong>: <%= ride.user.full_name %><br>
+            <strong>Email</strong>: <%= ride.user.email %>
+          </div>
+
+          <div class="request_ride" data-toggle="tooltip" title="Request ride">
+            <%= image_tag 'taxi.svg' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

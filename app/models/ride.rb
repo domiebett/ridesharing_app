@@ -3,4 +3,5 @@ class Ride < ApplicationRecord
             :description, presence: true
 
   belongs_to :vehicle
+  has_one :user, through: :vehicle
 end

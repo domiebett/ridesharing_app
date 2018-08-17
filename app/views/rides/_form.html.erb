@@ -34,13 +34,13 @@
       <%= form.label :departure_date %>
       <%= form.text_field :departure_date, id: :ride_departure_date,
                           class: :date_picker, placeholder: 'Click to select a date.',
-                          read_only: :true %>
+                          readonly: true %>
     </div>
 
     <div class="field">
       <%= form.label :departure_time %>
       <%= form.text_field :departure_time, id: :ride_departure_time,
-                          class: :time_picker, placeholder: 'Click to select a time', read_only: :true %>
+                          class: :time_picker, placeholder: 'Click to select a time' %>
     </div>
   </div>
 
@@ -53,11 +53,16 @@
   </div>
 
   <div class="field">
-    <%= form.label :vehicle_id %>
-    <%= form.select :vehicle_id, current_user.vehicles_hash, id: :ride_vehicles, prompt: 'Select a vehicle' %>
+    <%= form.label :vehicle_id %><br>
+    <select name="ride[vehicle_id]" class="selectpicker">
+      <option value="" selected disabled>Select a vehicle</option>
+      <% current_user.vehicles_hash.each do |key, value| %>
+        <option value="<%= value %>"><%= key %></option>
+      <% end %>
+    </select>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: [:btn, 'btn-primary'] %>
   </div>
 <% end %>
