@@ -72,4 +72,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
+  config.action_cable.disable_request_forgery_protection = true
+
 end

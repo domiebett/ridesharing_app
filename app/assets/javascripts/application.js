@@ -21,6 +21,7 @@
 //= require bootstrap-datepicker/dist/js/bootstrap-datepicker
 //= require timepicker/jquery.timepicker
 //= require bootstrap-select/dist/js/bootstrap-select
+//= require alertifyjs/build/alertify
 
 //= require date_picker
 //= require custom_maps

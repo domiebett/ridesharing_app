@@ -2,6 +2,7 @@
   "name": "ridesharing_app",
   "private": true,
   "dependencies": {
+    "alertifyjs": "^1.11.1",
     "bootstrap": "^4.1.3",
     "bootstrap-datepicker": "uxsolutions/bootstrap-datepicker",
     "bootstrap-select": "^1.13.1",

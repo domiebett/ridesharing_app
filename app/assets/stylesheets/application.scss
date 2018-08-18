@@ -15,6 +15,7 @@
  *= require bootstrap-datepicker/dist/css/bootstrap-datepicker
  *= require bootstrap-select/dist/css/bootstrap-select
  *= require timepicker/jquery.timepicker
+ *= require alertifyjs/build/css/alertify
  */
 
 $app-blue: #4f70b5;
@@ -140,6 +141,10 @@ a {
   td, th{
     padding: 15px 10px 15px 10px !important;
     text-align: center;
+
+    &:not(:last-child) {
+      text-align: left;
+    }
   }
 
   th {

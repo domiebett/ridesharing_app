@@ -71,34 +71,69 @@ $app-green: #16a085;
       }
     }
 
-    .request_ride {
+    .request_options {
       position: absolute;
       bottom: 5px;
       right: 10px;
       width: 40px;
       height: 40px;
-      border: 3px solid $app-green;
       border-radius: 50%;
       background-color: white;
       background-size: cover;
       cursor: pointer;
       transition: 1s ease-in-out;
 
-      &:hover {
-        animation: radiate 1s infinite;
+      &.request_ride {
+        border: 3px solid $app-green;
+        box-shadow: $app-green;
+
+        img {
+          width: 80%;
+          height: 80%;
+          margin: 10%;
+          padding: 0;
+        }
+
+        &:hover {
+          animation: success_radiate 1s infinite;
+        }
       }
 
-      img {
-        width: 80%;
-        height: 80%;
-        margin: 10%;
+      &.cancel_ride {
+        border: none;
+        box-shadow: red;
+
+        img {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        &:hover {
+          animation: danger_radiate 1s infinite;
+        }
+      }
+
+      button, input {
+        position: absolute;
+        background: transparent;
+        color: transparent;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         padding: 0;
+        margin: 0;
       }
     }
   }
 }
 
-@keyframes radiate {
+@keyframes success_radiate {
   0% {
     box-shadow: 0 0 5px $app-green;
   }
@@ -107,5 +142,17 @@ $app-green: #16a085;
   }
   100% {
     box-shadow: 0 0 5px $app-green;
+  }
+}
+
+@keyframes danger_radiate {
+  0% {
+    box-shadow: 0 0 5px red;
+  }
+  50% {
+    box-shadow: 0 0 20px red;
+  }
+  100% {
+    box-shadow: 0 0 5px red;
   }
 }

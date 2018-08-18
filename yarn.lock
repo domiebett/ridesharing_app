@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+alertifyjs@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/alertifyjs/-/alertifyjs-1.11.1.tgz#e40e45c4fde4234467cc481b936fe6337e6a4828"
+
 bootstrap-datepicker@uxsolutions/bootstrap-datepicker:
   version "1.8.0"
   resolved "https://codeload.github.com/uxsolutions/bootstrap-datepicker/tar.gz/7adfa40f302f66f17e0152728f1cf7c9025ed1a7"
