@@ -62,40 +62,27 @@ body {
 *************************************/
 
 .toast {
-  position: fixed;
-  top: 110px;
-  right: 30px;
+  position: absolute;
+  top: -70px;
+  left: 0;
   visibility: hidden;
-  width: 300px;
-  height: auto;
+  width: 100%;
   margin: 0;
-  text-align: center;
   padding: 0;
-  font-size: 1em;
+  text-align: center;
+  font-size: 0.85em;
   animation: disappear 7s;
 
-  &.toast-success {
+  &.notice {
     background-color: rgba(0, 128, 0, 0.7);
     border: 1px solid #008000;
     color: #ffffff;
   }
 
-  &.toast-warning {
+  &.alert {
     background-color: rgba(255, 165, 0, 0.7);
     border: 1px solid #ffa500;
     color: #ffffff;
-  }
-
-  &.toast-error {
-    background-color: rgba(255, 0, 0, 0.7);
-    border: 1px solid #ff0000;
-    color: #ffffff;
-  }
-
-  &.toast-info {
-    background-color: rgba(79, 112, 181, 0.7);
-    border: 1px solid #4f70b5;
-    color: white;
   }
 }
 

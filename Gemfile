@@ -39,7 +39,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg'
 gem 'devise'
 gem 'figaro'
-gem 'pickadate-rails'
 gem 'popper_js'
 
 group :development, :test do

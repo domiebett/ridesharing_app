@@ -28,5 +28,6 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
+    alertify.set('notifier','position', 'top-right');
 });

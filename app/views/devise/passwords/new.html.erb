@@ -1,13 +1,16 @@
 
 <div class="user">
+
   <div class="container">
+    <% if alert %>
+      <p class="toast alert"><%= alert %></p>
+    <% elsif notice %>
+      <p class="toast notice"><%= notice %></p>
+    <% end %>
 
-    <div class="image">
-
-    </div>
+    <h3>Forgot your password?</h3>
 
     <div class="form_holder">
-      <h2>Forgot your password?</h2>
 
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= devise_error_messages! %>
@@ -18,12 +21,15 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "Send me reset password instructions" %>
+          <%= f.submit "Send me reset password instructions", class: :btn %>
         </div>
       <% end %>
+    </div>
 
+    <div class="link_holders">
       <div class="links">
         <%= render "devise/shared/links" %>
       </div>
+    </div>
   </div>
 </div>

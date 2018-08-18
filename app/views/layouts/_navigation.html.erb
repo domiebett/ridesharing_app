@@ -2,17 +2,23 @@
   <h1 class="app_title">Ride Share</h1>
 
   <ul class="menu">
-    <li class="<%= current_class?(home_index_path) %>">
-      <%= link_to "Home", home_index_path, class: current_class?(home_index_path) %>
-    </li>
-    <li class="<%= current_class?(new_ride_path) %>">
-      <%= link_to "Offer Ride", new_ride_url, class: current_class?(new_ride_path) %>
-    </li>
-    <li class="<%= current_class?(new_ride_url) %>">
-      <%= link_to "Find Ride", new_ride_url, class: current_class?(new_ride_url) %>
-    </li>
-    <li class="<%=  %>"><a href="#">History</a></li>
-    <li class="slider"></li>
+    <% if current_user %>
+      <li class="<%= current_class?(home_index_path) %>">
+        <%= link_to "Home", home_index_path, class: current_class?(home_index_path) %>
+      </li>
+      <li class="<%= current_class?(new_ride_path) %>">
+        <%= link_to "Offer Ride", new_ride_url, class: current_class?(new_ride_path) %>
+      </li>
+      <li class="<%= current_class?(new_ride_url) %>">
+        <%= link_to "Find Ride", new_ride_url, class: current_class?(new_ride_url) %>
+      </li>
+      <li class="<%=  %>"><a href="#">History</a></li>
+      <li class="slider"></li>
+    <% else %>
+      <li class="login_message">
+        <a>Welcome! Please, login in to access the nav bar.</a>
+      </li>
+    <% end %>
   </ul>
 </div>
 
