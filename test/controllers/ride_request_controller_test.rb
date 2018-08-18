@@ -21,12 +21,12 @@ class RideRequestControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy' do
-    delete destroy_ride_request_url(ride_id: rides(:two).id)
+    delete destroy_ride_request_url(ride_id: rides(:two).id, user_id: @user.id)
     assert_redirected_to home_index_path
   end
 
   test 'should update' do
-    put update_ride_request_url(ride_id: @ride.id, id: @ride_request.id)
-    assert_response :success
+    put update_ride_request_url(ride_id: rides(:two).id, user_id: users(:two).id)
+    assert_redirected_to rides(:two)
   end
 end

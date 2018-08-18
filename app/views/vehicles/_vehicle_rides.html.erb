@@ -1,0 +1,17 @@
+<% rides.each do |ride| %>
+  <div class="details_card">
+    <div class="header_icon user_icon">
+      <i class="fa fa-taxi"></i>
+    </div>
+    <div class="information user_information">
+      <strong>Origin:</strong> <%= ride.origin %>
+      <br>
+      <strong>Destination:</strong> <%= ride.destination %>
+      <br>
+      <strong>Date:</strong> <%= ride.departure_date %>
+    </div>
+    <div class="details_footer">
+
+    </div>
+  </div>
+<% end %>

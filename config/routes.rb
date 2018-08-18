@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   controller :ride_request do
     post 'rides/:ride_id/requests' => :create, as: 'new_ride_request'
     get 'rides/:ride_id/requests' => :index, as: 'ride_requests'
-    put 'rides/:ride_id/requests/:id' => :update, as: 'update_ride_request'
-    delete 'rides/:ride_id/requests' => :destroy, as: 'destroy_ride_request'
+    put 'rides/:ride_id/requests/:user_id' => :update, as: 'update_ride_request'
+    delete 'rides/:ride_id/requests/:user_id' => :destroy, as: 'destroy_ride_request'
   end
 
   resources :rides

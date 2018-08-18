@@ -18,7 +18,17 @@ class RideRequestController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    @ride_request.accepted = true;
+    respond_to do |format|
+      if @ride_request.save
+        format.html do
+          user = User.find(params[:user_id])
+          redirect_to @ride, notice: "#{user.first_name} successfully joined your ride."
+        end
+      end
+    end
+  end
 
   def destroy
     respond_to do |format|
@@ -36,10 +46,10 @@ class RideRequestController < ApplicationController
   end
 
   def set_ride_request
-    @ride_request = @ride.ride_requests.first
+    @ride_request = @ride.ride_requests.find_by(user_id: params[:user_id])
   end
 
   def ride_request_params
-    params.require(:ride_request).permit(:accepted, :ride_id, :id)
+    params.require(:ride_request).permit(:accepted, :ride_id, :user_id, :id)
   end
 end

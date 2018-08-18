@@ -1,3 +1,166 @@
 // Place all the styles related to the Rides controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$app-blue: #4f70b5;
+$app-blue-transparent: rgba(79, 112, 181, 0.18);
+$bgc: #f2f2f2;
+$app-dark: #2c3e50;
+
+.show_container {
+  width: 100%;
+  height: 100%;
+  .header {
+    position: relative;
+    width: 100%;
+    height: 30%;
+
+    .skew:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      overflow: visible;
+      width: 100%;
+      height: 150%;
+      background: $app-blue;
+      z-index: -1;
+      -webkit-transform: skewY(-2deg);
+      -moz-transform: skewY(-2deg);
+      -ms-transform: skewY(-2deg);
+      -o-transform: skewY(-2deg);
+      transform: skewY(-2deg);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: initial;
+    }
+  }
+
+  .content_holder {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 15%;
+    margin-left: 10%;
+    display: inline-grid;
+    grid-template-columns: 30% 70%;
+    .info {
+      position: relative;
+      width: 100%;
+      height: 80%;
+      box-shadow: 0 0 10px rgb(128, 128, 128);
+      background-color: white;
+      padding: 20px;
+
+      h5 {
+        color: $app-blue;
+        padding: 0;
+      }
+
+      .info_container {
+        height: 90%;
+        overflow: scroll;
+      }
+
+      .info_field {
+        margin: 20px 0;
+
+        .description {
+          text-align: justify;
+        }
+      }
+
+      .links {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 90%;
+        margin-left: 5%;
+        display: inline-grid;
+        grid-template-columns: 50% 50%;
+
+        a {
+          width: 95%;
+
+          &:first-child {
+            color: white;
+            background-color: cornflowerblue;
+          }
+
+          &:last-child {
+            color: white;
+            background-color: $app-blue;
+          }
+        }
+      }
+    }
+
+    .details {
+      width: 98%;
+      margin-left: 2%;
+      padding: 20px;
+
+      .title {
+        color: white;
+        span em {
+          color: red;
+        }
+      }
+
+      .details_content {
+        height: 80%;
+        margin-top: 40px;
+        h5 {
+          color: $app-blue;
+        }
+        .details_cards {
+          display: grid;
+          grid-template-columns: 33% 33% 33%;
+          height: 50%;
+
+          .details_card {
+            position: relative;
+            width: 90%;
+            margin-left: 5%;
+            height: 200px;
+            margin-top: 30px;
+            padding: 10px;
+            box-shadow: 0 0 5px gray;
+            .user_icon {
+              width: 70px;
+              height: 70px;
+              margin: -30px auto 0 auto;
+              border: 3px solid $app-blue;
+              background-color: gray;
+              border-radius: 50%;
+
+              i {
+                display: block;
+                height: 100%;
+                width: 100%;
+                padding-top: 15px;
+                font-size: 40px;
+                text-align: center;
+              }
+            }
+
+            .details_footer {
+              position: absolute;
+              width: 90%;
+              bottom: 10px;
+              left: 5%;
+
+              .btn {
+                width: 100%;
+                background-color: $app-blue;
+                color: white;
+
+                &:disabled {
+                  cursor: not-allowed;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<% ride.requesters.each do |requester| %>
+  <% if requester.accepted_ride_request?(ride) || current_user == ride.owner %>
+    <div class="details_card">
+      <div class="header_icon user_icon">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="user_information">
+        Name: <%= requester.full_name %>
+        <br>
+        Email: <%= requester.email %>
+      </div>
+      <div class="details_footer">
+        <% if requester.accepted_ride_request? ride %>
+          <%= button_tag "Already accepted", disabled: true, class: :btn %>
+        <% else %>
+          <%= button_to "Accept",
+                        update_ride_request_path(ride_id: ride.id, user_id: requester.id),
+                        method: :put, data: { confirm: "Do you wish to accept #{requester.first_name}?" },
+                        class: :btn %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

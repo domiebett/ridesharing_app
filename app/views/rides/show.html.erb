@@ -1,44 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="show_container">
+  <div class="header">
+    <div class="skew">
 
-<p>
-  <strong>Origin:</strong>
-  <%= @ride.origin %>
-</p>
+    </div>
+  </div>
+  <div class="content_holder">
 
-<p>
-  <strong>Destination:</strong>
-  <%= @ride.destination %>
-</p>
+    <div class="info">
+      <div class="info_container">
+        <div class="info_field">
+          <h5>Driver Info:</h5>
+          <span>
+          <strong>Name: </strong> <%= @ride.owner&.full_name %>
+            <br>
+          <strong>Email: </strong> <%= @ride.owner&.email %>
+        </span>
+        </div>
 
-<p>
-  <strong>Departure date:</strong>
-  <%= @ride.departure_date %>
-</p>
+        <div class="info_field">
+          <h5>Vehicle Info:</h5>
+          <span>
+          <strong>Vehicle model: </strong> <%= @ride.vehicle.vehicle_model %>
+            <br>
+          <strong>License plate: </strong> <%= @ride.vehicle.license_plate %>
+        </span>
+          </span>
+        </div>
 
-<p>
-  <strong>Departure time:</strong>
-  <%= @ride.departure_time %>
-</p>
+        <div class="info_field">
+          <h5>Description</h5>
+          <span class="description">
+            <%= @ride.description %>
+          </span>
+        </div>
+      </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ride.description %>
-</p>
+      <div class="links">
+        <%= link_to raw("&#8617; Back"), rides_path, class: :btn %>
+        <% if current_user == @ride.owner %>
+          <%= link_to raw("<i class='fa fa-pencil'></i> Edit"), edit_ride_path(@ride), class: :btn %>
+        <% end %>
+      </div>
+    </div>
 
-<p>
-  <strong>Vehicle:</strong>
-  <%= @ride.vehicle.vehicle_model %>
-</p>
+    <div class="details">
+      <div class="title">
+        <h3>Ride details</h3>
+        <span>
+          <strong><i class="fa fa-map-marker"></i></strong> <u>Origin:</u>
+          <%= @ride.origin %> |
+          <u>Destination:</u>
+          <%= @ride.destination %>
+        </span> <br>
 
-<p>
-  <strong>Vehicle License Plates:</strong>
-  <%= @ride.vehicle.license_plate %>
-</p>
+        <span>
+          <u>Leaving on:</u> <i class="fa fa-calendar"></i>
+          <%= @ride.departure_date.strftime("%B %d, %Y") %>
+          <u>at</u> <i class="fa fa-clock-o"></i>
+          <%= @ride.departure_time.strftime("%I:%M %p") %>
+        </span>
+      </div>
 
-<p>
-  <strong>User Name:</strong>
-  <%= @ride.owner&.full_name %>
-</p>
+      <div class="details_content">
+        <h5>Ride requests</h5>
 
-<%= link_to 'Edit', edit_ride_path(@ride) %> |
-<%= link_to 'Back', rides_path %>
+        <div class="details_cards">
+          <%= render partial: 'requesters', locals: { ride: @ride} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
