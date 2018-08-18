@@ -40,7 +40,7 @@ class RidesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update ride" do
     patch ride_url(@ride), params: { ride: { departure_date: @ride.departure_date, departure_time: @ride.departure_time, description: @ride.description, destination: @ride.destination, origin: @ride.origin, vehicle_id: @ride.vehicle_id } }
-    assert_redirected_to ride_url(@ride)
+    assert_response :success
   end
 
   test "should destroy ride" do

@@ -13,13 +13,16 @@
  *= require_self
  *= require bootstrap/dist/css/bootstrap
  *= require bootstrap-datepicker/dist/css/bootstrap-datepicker
+ *= require bootstrap-select/dist/css/bootstrap-select
  *= require timepicker/jquery.timepicker
+ *= require alertifyjs/build/css/alertify
  */
 
 $app-blue: #4f70b5;
 $app-blue-transparent: rgba(79, 112, 181, 0.18);
 $bgc: #f2f2f2;
 $app-dark: #2c3e50;
+$muted: #6c757d;
 
 @font-face {
   font-family: HarmoniaRegular;
@@ -59,39 +62,27 @@ body {
 *************************************/
 
 .toast {
-  position: fixed;
-  top: 70px;
-  right: 30px;
+  position: absolute;
+  top: -70px;
+  left: 0;
   visibility: hidden;
-  width: 300px;
-  height: auto;
+  width: 100%;
   margin: 0;
-  text-align: center;
   padding: 0;
+  text-align: center;
+  font-size: 0.85em;
   animation: disappear 7s;
 
-  &.toast-success {
+  &.notice {
     background-color: rgba(0, 128, 0, 0.7);
     border: 1px solid #008000;
     color: #ffffff;
   }
 
-  &.toast-warning {
+  &.alert {
     background-color: rgba(255, 165, 0, 0.7);
     border: 1px solid #ffa500;
     color: #ffffff;
-  }
-
-  &.toast-error {
-    background-color: rgba(255, 0, 0, 0.7);
-    border: 1px solid #ff0000;
-    color: #ffffff;
-  }
-
-  &.toast-info {
-    background-color: rgba(79, 112, 181, 0.7);
-    border: 1px solid #4f70b5;
-    color: white;
   }
 }
 
@@ -102,16 +93,22 @@ body {
 a {
   &.delete_link {
     color: red;
+    transition: 0.05s ease-in-out;
 
     &:hover {
-      display: block;
-      border: 1px solid red;
-      padding: 5px;
+      color: red;
+      text-shadow: 0 0 25px red;
     }
   }
 
   &.edit_link {
     color: $app-blue;
+    transition: 0.05s ease-in-out;
+
+    &:hover {
+      color: $app-blue;
+      text-shadow: 0 0 25px $app-blue;
+    }
   }
 }
 
@@ -131,6 +128,10 @@ a {
   td, th{
     padding: 15px 10px 15px 10px !important;
     text-align: center;
+
+    &:not(:last-child) {
+      text-align: left;
+    }
   }
 
   th {
@@ -140,27 +141,25 @@ a {
   tbody {
     tr {
       border: 1px solid $app-blue !important;
-      //box-shadow: 0 0 5px $app-blue;
+      box-shadow: 0 1px 5px rgba(128, 128, 128, 0.4);
       cursor: pointer;
       transition: 0.2s ease-out;
-      &:hover {
-        //box-shadow: 0 0 10px gray;
-      }
-      td {
-        text-align: center;
-        border-style: solid;
-        border-color: $app-blue !important;
-        border-width: 2px 0;
+
+      td:not(:last-child) {
+        text-align: left;
 
         &:first-child {
-          border-left-width: 2px;
-          border-radius: 5px 0 0 5px;
+          border-radius: 2px 0 0 2px;
         }
 
         &:last-child {
-          border-right-width: 2px;
-          border-radius: 0 5px 5px 0;
+          border-radius: 0 2px 2px 0;
         }
+      }
+
+      td:last-child {
+        text-align: center;
+
       }
     }
   }
@@ -197,7 +196,7 @@ a {
 
 @keyframes bounce {
   0% {
-    margin-left: 13px;
+    margin-left: 9px;
   }
 
   50% {
@@ -205,6 +204,6 @@ a {
   }
 
   100% {
-    margin-left: 13px;
+    margin-left: 9px;
   }
 }

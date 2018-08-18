@@ -15,12 +15,19 @@
 //= require turbolinks
 
 //= require jquery/dist/jquery
-
+//= require popper
 //= require bootstrap/dist/js/bootstrap
 
 //= require bootstrap-datepicker/dist/js/bootstrap-datepicker
 //= require timepicker/jquery.timepicker
+//= require bootstrap-select/dist/js/bootstrap-select
+//= require alertifyjs/build/alertify
 
 //= require date_picker
 //= require custom_maps
 //= require_tree .
+
+$(document).on('turbolinks:load', function () {
+    $('[data-toggle="tooltip"]').tooltip();
+    alertify.set('notifier','position', 'top-right');
+});

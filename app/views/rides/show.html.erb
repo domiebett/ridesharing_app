@@ -37,7 +37,7 @@
 
 <p>
   <strong>User Name:</strong>
-  <%= @ride.vehicle.user&.full_name %>
+  <%= @ride.owner&.full_name %>
 </p>
 
 <%= link_to 'Edit', edit_ride_path(@ride) %> |

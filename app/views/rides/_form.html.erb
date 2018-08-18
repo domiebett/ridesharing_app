@@ -2,12 +2,6 @@
   <% if ride.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
-
-      <ul>
-      <% ride.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
     </div>
   <% end %>
 
@@ -16,13 +10,21 @@
     <div class="field">
       <%= form.label :origin %>
       <%= form.text_field :origin, class: :maps_auto_complete,
-                          id: :maps_origin, placeholder: 'Enter a location' %>
+                          id: :maps_origin, placeholder: 'Enter a location',
+                          required: true %>
+      <% unless ride.errors.messages[:origin].empty? %>
+        <span class="error_messages">Origin <%= ride.errors.messages[:origin].join("\n") %></span>
+      <% end %>
     </div>
 
     <div class="field">
       <%= form.label :destination %>
       <%= form.text_field :destination, class: :maps_auto_complete,
-                          id: :maps_destination, placeholder: 'Enter a location' %>
+                          id: :maps_destination, placeholder: 'Enter a location',
+                          required: true%>
+      <% unless ride.errors.messages[:destination].empty? %>
+        <span class="error_messages">Destination <%= ride.errors.messages[:destination].join("\n") %></span>
+      <% end %>
     </div>
   </div>
 
@@ -33,31 +35,51 @@
     <div class="field">
       <%= form.label :departure_date %>
       <%= form.text_field :departure_date, id: :ride_departure_date,
-                          class: :date_picker, placeholder: 'Click to select a date.',
-                          read_only: :true %>
+                          class: :date_picker, placeholder: 'YYYY-MM-DD',
+                          autocomplete: :off, required: true %>
+      <% unless ride.errors.messages[:departure_date].empty? %>
+        <span class="error_messages">Departure date <%= ride.errors.messages[:departure_date].join("\n") %></span>
+      <% end %>
     </div>
 
     <div class="field">
       <%= form.label :departure_time %>
       <%= form.text_field :departure_time, id: :ride_departure_time,
-                          class: :time_picker, placeholder: 'Click to select a time', read_only: :true %>
+                          class: :time_picker, placeholder: 'HH:MM am/pm',
+                          required: true %>
+      <% unless ride.errors.messages[:departure_time].empty? %>
+        <span class="error_messages">Departure time <%= ride.errors.messages[:departure_time].join("\n") %></span>
+      <% end %>
     </div>
   </div>
 
   <hr>
 
-  <h4>Description</h4>
+  <h4>Extra info</h4>
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, placeholder: 'Enter a description' %>
+    <%= form.text_area :description, placeholder: 'Enter a description',
+                       required: true %>
+    <% unless ride.errors.messages[:description].empty? %>
+      <span class="error_messages">Description <%= ride.errors.messages[:description].join("\n") %></span>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= form.label :vehicle_id %>
-    <%= form.select :vehicle_id, current_user.vehicles_hash, id: :ride_vehicles, prompt: 'Select a vehicle' %>
+    <%= form.label :vehicle_id %><br>
+    <select name="ride[vehicle_id]" class="selectpicker" required>
+      <option value="" selected disabled>Select a vehicle</option>
+      <% current_user.vehicles_hash.each do |key, value| %>
+        <option value="<%= value %>"><%= key %></option>
+      <% end %>
+    </select>
+    <br>
+    <% unless ride.errors.messages[:vehicle].empty? %>
+      <span class="error_messages">Vehicle <%= ride.errors.messages[:vehicle].join("\n") %></span>
+    <% end %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: [:btn, 'btn-primary'] %>
   </div>
 <% end %>

@@ -74,6 +74,21 @@ a.active {
   pointer-events: none;
 }
 
+.login_message {
+  width: 100% !important;
+  text-align: center;
+  color: white;
+  a {
+    position: relative;
+  }
+  &:hover {
+    a {
+      position: absolute;
+      animation: 0.2s shake 20;
+    }
+  }
+}
+
 li.slider {
   width: 25%;
   height: 100%;
@@ -153,6 +168,7 @@ li.slider {
     width: 60px;
     height: 60px;
     transition: all ease-in-out .27s;
+    box-shadow: 0 0 5px gray;
 
     &:last-child {
       margin-top: 100%;
@@ -201,9 +217,8 @@ li.slider {
     }
 
     &.active {
-      border-color: $bgc;
-      margin-left: 28px;
-      animation: 1s bounce infinite;
+      border-color: #3498db;
+      pointer-events: none;
 
       &:hover {
         text-shadow: none;
@@ -212,5 +227,20 @@ li.slider {
         }
       }
     }
+  }
+}
+
+@keyframes shake {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  50% {
+    left: -10px;
+    top: 0;
+  }
+  100% {
+    left: 0px;
+    top: 0;
   }
 }

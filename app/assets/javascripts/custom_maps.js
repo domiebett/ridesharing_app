@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
     $(function() {
         let mapsOrigin = document.getElementById('maps_origin');
         new google.maps.places.Autocomplete(mapsOrigin);

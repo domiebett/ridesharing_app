@@ -2,31 +2,34 @@
   <% if vehicle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
-
-      <ul>
-        <% vehicle.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
     </div>
   <% end %>
 
   <div class="field">
     <%= form.label :vehicle_model %>
-    <%= form.text_field :vehicle_model %>
+    <%= form.text_field :vehicle_model, required: true, autocomplete: :off %>
+    <% unless vehicle.errors.messages[:vehicle_model].empty? %>
+      <span class="error_messages">Vehicle model <%= ride.errors.messages[:vehicle_model].join("\n") %></span>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :license_plate %>
-    <%= form.text_field :license_plate %>
+    <%= form.text_field :license_plate, required: true, autocomplete: :off %>
+    <% unless vehicle.errors.messages[:license_plate].empty? %>
+      <span class="error_messages">License plate <%= ride.errors.messages[:license_plate].join("\n") %></span>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :capacity %>
-    <%= form.number_field :capacity %>
+    <%= form.number_field :capacity, required: true %>
+    <% unless vehicle.errors.messages[:capacity].empty? %>
+      <span class="error_messages">Capacity <%= ride.errors.messages[:capacity].join("\n") %></span>
+    <% end %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: [:btn, 'btn-primary'] %>
   </div>
 <% end %>

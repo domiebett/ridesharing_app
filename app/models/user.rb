@@ -9,7 +9,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :vehicles, dependent: :destroy
-  has_many :rides, through: :vehicles
+
+  has_many :owned_rides, foreign_key: 'owner_id', class_name: 'Ride'
+
+  has_many :ride_requests, dependent: :destroy
+  has_many :requested_rides, through: :ride_requests, class_name: 'Ride'
 
   def vehicles_hash
     vehicles_hash = {}
@@ -26,5 +30,18 @@ class User < ApplicationRecord
 
   def create_vehicle(params)
     vehicles.build(params)
+  end
+
+  def create_ride(params)
+    owned_rides.build(params)
+  end
+
+  def create_ride_request(ride)
+    requests = ride_requests.find_by(ride_id: ride.id)
+    ride_requests.build(ride_id: ride.id) if requests.nil?
+  end
+
+  def requested_ride?(ride)
+    !ride_requests.find_by(ride_id: ride.id).nil?
   end
 end

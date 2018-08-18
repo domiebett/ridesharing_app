@@ -6,7 +6,7 @@ class RidesController < ApplicationController
   # GET /rides
   # GET /rides.json
   def index
-    @rides = current_user.is_admin ? Ride.all : current_user.rides
+    @rides = current_user.is_admin ? Ride.all : current_user.owned_rides
   end
 
   # GET /rides/1
@@ -24,7 +24,7 @@ class RidesController < ApplicationController
   # POST /rides
   # POST /rides.json
   def create
-    @ride = Ride.new(ride_params)
+    @ride = current_user.create_ride(ride_params)
     create_resource @ride
   end
 
@@ -44,13 +44,12 @@ class RidesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_ride
-    @ride = if current_user.is_admin
-              Ride.find(params[:id])
-            else
-              current_user.rides.find(params[:id])
-            end
+    if current_user.is_admin
+      @ride = Ride.find(params[:id])
+      return
+    end
 
-    @ride = Ride.find(params[:id])
+    @ride = current_user.owned_rides.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
