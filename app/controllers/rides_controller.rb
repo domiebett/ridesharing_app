@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RidesController < ApplicationController
-  before_action :set_ride, only: %i[show edit update destroy]
+  before_action :set_ride, only: %i[edit update destroy]
 
   # GET /rides
   # GET /rides.json
@@ -11,7 +11,9 @@ class RidesController < ApplicationController
 
   # GET /rides/1
   # GET /rides/1.json
-  def show; end
+  def show
+    @ride = Ride.find(params[:id])
+  end
 
   # GET /rides/new
   def new

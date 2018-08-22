@@ -44,4 +44,8 @@ class User < ApplicationRecord
   def requested_ride?(ride)
     !ride_requests.find_by(ride_id: ride.id).nil?
   end
+
+  def accepted_ride_request?(ride)
+    ride_requests.find_by(ride_id: ride.id).accepted
+  end
 end

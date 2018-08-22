@@ -1,34 +1,88 @@
-<div class="show_view">
-  <div class="image">
+<!--<div class="show_view">-->
+<!--  <div class="image">-->
 
+<!--  </div>-->
+<!--  <div class="card">-->
+<!--    <p>-->
+<!--      <strong>Model:</strong>-->
+      <%#= @vehicle.vehicle_model %>
+<!--    </p>-->
+
+<!--    <p>-->
+<!--      <strong>License plate:</strong>-->
+      <%#= @vehicle.license_plate %>
+<!--    </p>-->
+
+<!--    <p>-->
+<!--      <strong>Capacity:</strong>-->
+      <%#= @vehicle.capacity %>
+<!--    </p>-->
+
+<!--    <p>-->
+<!--      <strong>Owner:</strong>-->
+      <%#= @vehicle.user&.full_name %>
+<!--    </p>-->
+
+<!--    <p>-->
+<!--      <strong>Owner Email:</strong>-->
+      <%#= @vehicle.user&.email %>
+<!--    </p>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="show_container">
+  <div class="header">
+    <div class="skew">
+
+    </div>
   </div>
-  <div class="card">
-    <p>
-      <strong>Model:</strong>
-      <%= @vehicle.vehicle_model %>
-    </p>
+  <div class="content_holder">
+    <div class="info">
+      <div class="info_container">
+        <div class="info_field">
+          <h5>Driver Info</h5>
+          <span>
+            <strong>Name: </strong> <%= @vehicle.user&.full_name %>
+            <br>
+            <strong>Email: </strong> <%= @vehicle.user&.email %>
+          </span>
+        </div>
 
-    <p>
-      <strong>License plate:</strong>
-      <%= @vehicle.license_plate %>
-    </p>
+        <div class="info_field">
+          <h5>Other Info</h5>
+          <span>
+            <strong>Number of rides: </strong> <%= @vehicle.rides.count %>
+          </span>
+        </div>
 
-    <p>
-      <strong>Capacity:</strong>
-      <%= @vehicle.capacity %>
-    </p>
+        <div class="links">
+          <%= link_to raw("&#8617; Back"), vehicles_path, class: :btn %>
+          <%= link_to raw("<i class='fa fa-pencil'></i> Edit"), edit_vehicle_path(@vehicle), class: :btn %>
+        </div>
+      </div>
+    </div>
 
-    <p>
-      <strong>Owner:</strong>
-      <%= @vehicle.user&.full_name %>
-    </p>
+    <div class="details">
+      <div class="title">
+        <h3>Vehicle Details</h3>
+        <span>
+          <strong><i class="fa fa-car"></i></strong><u>Vehicle Model:</u>
+          <%= @vehicle.vehicle_model %> |
+          <u>Capacity: </u>
+          <%= @vehicle.capacity %>
+          <br>
+          <u>License Plates: </u> <%= @vehicle.license_plate %>
+          <br>
+        </span>
+      </div>
 
-    <p>
-      <strong>Owner Email:</strong>
-      <%= @vehicle.user&.email %>
-    </p>
+      <div class="details_content">
+        <h5>Rides</h5>
+
+        <div class="details_cards">
+          <%= render partial: 'vehicle_rides', 'locals': { rides: @vehicle.rides } %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'Back', vehicles_path %>

@@ -17,13 +17,13 @@
         <td><%= vehicle.vehicle_model %></td>
         <td><%= vehicle.license_plate %></td>
         <td><%= vehicle.capacity %></td>
-        <td>
+        <td class="controls">
           <%= link_to 'Show', vehicle %>
         </td>
-        <td>
+        <td class="controls">
           <%= link_to raw("<i class='fa fa-pencil-square-o'></i>"), edit_vehicle_path(vehicle), class: :edit_link %>
         </td>
-        <td>
+        <td class="controls">
           <%= link_to raw("<i class='fa fa-trash'></i>"), vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: :delete_link %>
         </td>
       </tr>
