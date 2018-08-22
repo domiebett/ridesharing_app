@@ -25,10 +25,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def create_resource(resource)
+  def create_resource(resource, redirect_uri = nil, notice = nil)
+    notice = "#{resource.class} was successfully created." if notice.nil?
+    redirect_uri = resource if redirect_uri.nil?
     respond_to do |format|
       if resource.save
-        format.html { redirect_to resource, notice: "#{resource.class} was successfully created." }
+        format.html { redirect_to redirect_uri, notice: notice }
         format.json { render :show, status: :created, location: resource }
       else
         format.html { render :new }
@@ -37,10 +39,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def update_resource(resource, params)
+  def update_resource(resource, params, redirect_uri = nil, notice = nil)
+    notice = "#{resource.class} was successfully updated." if notice.nil?
+    redirect_uri = resource if redirect_uri.nil?
     respond_to do |format|
       if resource.update(params)
-        format.html { redirect_to resource, notice: "#{resource.class} was successfully updated." }
+        format.html { redirect_to redirect_uri, notice: notice }
         format.json { render :show, status: :ok, location: resource }
       else
         format.html { render :edit }
@@ -49,10 +53,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def destroy_resource(resource, redirect_route)
+  def destroy_resource(resource, redirect_uri = nil, notice = nil)
+    notice = "#{resource.class} was successfully destroyed." if notice.nil?
+    redirect_uri = resource if redirect_uri.nil?
     resource.destroy
     respond_to do |format|
-      format.html { redirect_to redirect_route, notice: "#{resource.class} was successfully destroyed." }
+      format.html { redirect_to redirect_uri, notice: notice }
       format.json { head :no_content }
     end
   end

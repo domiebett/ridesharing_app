@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.first_name %> just sent a ride request.</h1>
+    <p>
+      <%= @user.full_name %> just sent a ride request and is waiting for you to accept it.
+    </p>
+    <p>
+      Please, follow this link to check it out: <a href="<%= @url %>"><%= @url %></a>
+    </p>
+    <p>Thanks for using ride share. Have a blessed day.</p>
+  </body>
+</html>
