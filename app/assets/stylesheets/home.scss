@@ -156,3 +156,17 @@ $app-green: #16a085;
     box-shadow: 0 0 5px red;
   }
 }
+
+@media all and (max-width: 972px) {
+  .rides_container {
+    display: grid;
+    grid-template-columns: 50% 50% !important;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .rides_container {
+    display: grid;
+    grid-template-columns: 100% !important;
+  }
+}

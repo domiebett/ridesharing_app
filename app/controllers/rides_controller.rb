@@ -7,6 +7,7 @@ class RidesController < ApplicationController
   # GET /rides.json
   def index
     @rides = current_user.is_admin ? Ride.all : current_user.owned_rides
+    @rides = @rides.order(created_at: :desc).to_a
   end
 
   # GET /rides/1

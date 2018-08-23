@@ -14,7 +14,7 @@
           <%= button_tag "Already accepted", disabled: true, class: :btn %>
         <% else %>
           <%= button_to "Accept",
-                        update_ride_request_path(ride_id: ride.id, user_id: requester.id),
+                        update_ride_request_path(ride_id: ride.id, user_id: requester.id, accepted: true),
                         method: :put, data: { confirm: "Do you wish to accept #{requester.first_name}?" },
                         class: :btn %>
         <% end %>

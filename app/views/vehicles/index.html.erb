@@ -1,38 +1,36 @@
-<div class="index_container">
-  <h1>Vehicles</h1>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th colspan="1">Vehicle Model</th>
-      <th colspan="1">License plate</th>
-      <th colspan="1">Capacity</th>
-      <th colspan="3">Controls</th>
-    </tr>
-    </thead>
+<div class="table_container">
+  <h3>Your vehicles ...</h3>
 
-    <tbody>
-    <% @vehicles.each do |vehicle| %>
-      <tr>
-        <td><%= vehicle.vehicle_model %></td>
-        <td><%= vehicle.license_plate %></td>
-        <td><%= vehicle.capacity %></td>
-        <td class="controls">
-          <%= link_to 'Show', vehicle %>
-        </td>
-        <td class="controls">
-          <%= link_to raw("<i class='fa fa-pencil-square-o'></i>"), edit_vehicle_path(vehicle), class: :edit_link %>
-        </td>
-        <td class="controls">
-          <%= link_to raw("<i class='fa fa-trash'></i>"), vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: :delete_link %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <% if @vehicles.empty? %>
+    <%= render partial: 'layouts/no_content', locals: { message: 'You have no vehicles. Add a vehicle to view.'}  %>
+  <% else %>
 
-  <br>
-
-  <%= link_to 'New Vehicle', new_vehicle_path %>
-
+    <ul class="responsive_table">
+      <li class="table_header">
+        <div class="col col_1">License Plate</div>
+        <div class="col col_2">Vehicle Model</div>
+        <div class="col col_3">Capacity</div>
+        <div class="col col_4">Actions</div>
+      </li>
+      <% @vehicles.each do |vehicle| %>
+        <li class="table_row">
+          <div class="col col_1" data-label="License Plate"><%= vehicle.license_plate %></div>
+          <div class="col col_2" data-label="Vehicle Model"><%= vehicle.vehicle_model %></div>
+          <div class="col col_3" data-label="Capacity"><%= vehicle.capacity %></div>
+          <div class="col col_4 actions">
+            <%= link_to raw("<i class='fa fa-tv' data-toggle='tooltip' title='show'></i>"),
+                        vehicle %> |
+            <%= link_to raw("<i class='fa fa-pencil-square-o' data-toggle='tooltip' title='edit'></i>"),
+                        edit_vehicle_path(vehicle), class: :edit_link %> |
+            <%= link_to raw("<i class='fa fa-trash' data-toggle='tooltip' title='delete'></i>"), vehicle,
+                        method: :delete, data: { confirm: 'Are you sure?' },
+                        class: :delete_link %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
+
+<%= link_to '+', new_vehicle_path, class: :add_button %>

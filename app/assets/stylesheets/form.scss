@@ -136,3 +136,10 @@ textarea {
 .error_messages {
   color: red;
 }
+
+@media all and (max-width: 767px) {
+  .form_container {
+    width: 90%;
+    height: auto;
+  }
+}

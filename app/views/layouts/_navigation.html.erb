@@ -12,7 +12,9 @@
       <li class="<%= current_class?(new_ride_url) %>">
         <%= link_to "Find Ride", new_ride_url, class: current_class?(new_ride_url) %>
       </li>
-      <li class="<%=  %>"><a href="#">History</a></li>
+      <li class="<%= current_class?(user_requests_path) %>">
+        <%= link_to "Ride requests", user_requests_path, class: current_class?(user_requests_path) %>
+      </li>
       <li class="slider"></li>
     <% else %>
       <li class="login_message">
