@@ -3,12 +3,14 @@
 class RideRequestController < ApplicationController
   include MailHelper
 
-  before_action :set_ride
+  before_action :set_ride, except: %i[index]
   before_action :prevent_creating_full_rides, only: %i[create]
   before_action :prevent_accepting_full_ride, only: %i[update]
   before_action :set_ride_request, only: %i[update destroy]
 
-  def index; end
+  def index
+    @rides = current_user.requested_rides
+  end
 
   def create
     @ride_request = current_user.create_ride_request(@ride)

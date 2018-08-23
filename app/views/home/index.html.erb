@@ -23,45 +23,49 @@
     </div>
   </div>
 
-  <div class="home_contents">
-    <div class="rides_container">
-      <% @rides.each do |ride| %>
-        <div class="ride_card">
-          <div class="capacity">
-            <span>Cap: <%= ride.capacity_left %></span>
-          </div>
-
-          <div class="content">
-            <strong>Pick up</strong>: <i class="fa fa-map-marker"></i> <%= ride.origin%><br>
-            <u>at</u>
-            <em><%= ride.departure_time.strftime("%I:%M %p") %></em>
-            <u>on</u>
-            <em><%= ride.departure_date.strftime("%B %d, %Y") %></em><br>
-            <strong>Destination</strong>: <i class="fa fa-map-marker"></i> <%= ride.destination %>
-          </div>
-
-          <div class="other_info">
-            <strong>Driver</strong>: <%= ride.owner.full_name %><br>
-            <strong>Email</strong>: <%= ride.owner.email %>
-          </div>
-
-          <% if current_user.requested_ride?(ride) %>
-            <div class="request_options cancel_ride" data-toggle="tooltip" title="Cancel Request">
-              <%= button_to '',
-                            destroy_ride_request_path(ride_id: ride.id, user_id: current_user.id),
-                            method: :delete, data: { confirm: 'Are you sure you wish to cancel this request?' } %>
-              <%= image_tag 'stop-car.svg' %>
+  <% if @rides.empty? %>
+    <%= render partial: 'layouts/no_content', locals: { message: 'There is no available ride currently.'}  %>
+  <% else %>
+    <div class="home_contents">
+      <div class="rides_container">
+        <% @rides.each do |ride| %>
+          <div class="ride_card">
+            <div class="capacity">
+              <span>Cap: <%= ride.capacity_left %></span>
             </div>
-          <% else %>
-            <div class="request_options request_ride" data-toggle="tooltip" title="Request ride">
-              <%= button_to '',
-                            new_ride_request_path(ride_id: ride.id),
-                            method: :post, data: { confirm: 'Would you like to send this ride request?' } %>
-              <%= image_tag 'taxi.svg' %>
+
+            <div class="content">
+              <strong>Pick up</strong>: <i class="fa fa-map-marker"></i> <%= ride.origin%><br>
+              <u>at</u>
+              <em><%= ride.departure_time.strftime("%I:%M %p") %></em>
+              <u>on</u>
+              <em><%= ride.departure_date.strftime("%B %d, %Y") %></em><br>
+              <strong>Destination</strong>: <i class="fa fa-map-marker"></i> <%= ride.destination %>
             </div>
-          <% end %>
-        </div>
-      <% end %>
+
+            <div class="other_info">
+              <strong>Driver</strong>: <%= ride.owner.full_name %><br>
+              <strong>Email</strong>: <%= ride.owner.email %>
+            </div>
+
+            <% if current_user.requested_ride?(ride) %>
+              <div class="request_options cancel_ride" data-toggle="tooltip" title="Cancel Request">
+                <%= button_to '',
+                              destroy_ride_request_path(ride_id: ride.id, user_id: current_user.id),
+                              method: :delete, data: { confirm: 'Are you sure you wish to cancel this request?' } %>
+                <%= image_tag 'stop-car.svg' %>
+              </div>
+            <% else %>
+              <div class="request_options request_ride" data-toggle="tooltip" title="Request ride">
+                <%= button_to '',
+                              new_ride_request_path(ride_id: ride.id),
+                              method: :post, data: { confirm: 'Would you like to send this ride request?' } %>
+                <%= image_tag 'taxi.svg' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

@@ -244,3 +244,11 @@ li.slider {
     top: 0;
   }
 }
+
+@media all and (max-width: 600px) {
+  .menu {
+    li {
+      display: none;
+    }
+  }
+}

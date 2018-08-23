@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :owned_rides, foreign_key: 'owner_id', class_name: 'Ride'
 
   has_many :ride_requests, dependent: :destroy
-  has_many :requested_rides, through: :ride_requests, class_name: 'Ride'
+  has_many :requested_rides, through: :ride_requests, class_name: 'Ride', source: :ride
 
   def vehicles_hash
     vehicles_hash = {}

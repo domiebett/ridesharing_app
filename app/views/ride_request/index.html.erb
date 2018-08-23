@@ -1,9 +1,9 @@
 
 <div class="table_container">
-  <h3>Your rides ...</h3>
+  <h3>Your ride requests ...</h3>
 
   <% if @rides.empty? %>
-    <%= render partial: 'layouts/no_content', locals: { message: 'You have no rides. Add a ride to view.'}  %>
+    <%= render partial: 'layouts/no_content', locals: { message: 'You havent requested to join any rides.'}  %>
   <% else %>
     <ul class="responsive_table">
       <li class="table_header rides">
@@ -21,10 +21,9 @@
           <div class="col col_4 actions">
             <%= link_to raw("<i class='fa fa-tv' data-toggle='tooltip' title='show'></i>"),
                         ride %> |
-            <%= link_to raw("<i class='fa fa-pencil-square-o' data-toggle='tooltip' title='edit'></i>"),
-                        edit_ride_path(ride), class: :edit_link %> |
-            <%= link_to raw("<i class='fa fa-trash' data-toggle='tooltip' title='delete'></i>"),
-                        ride, method: :delete, data: { confirm: 'Are you sure?' },
+            <%= link_to raw("<i class='fa fa-ban' data-toggle='tooltip' title='cancel ride request'></i>"),
+                        destroy_ride_request_path(ride_id: ride.id, user_id: current_user.id),
+                        method: :delete, data: { confirm: 'Are you sure you wish to cancel this request?'},
                         class: :delete_link %>
           </div>
         </li>
@@ -32,5 +31,3 @@
     </ul>
   <% end %>
 </div>
-
-<%= link_to '+', new_ride_path, class: :add_button %>
