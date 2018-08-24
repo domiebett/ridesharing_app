@@ -9,6 +9,6 @@ class Ride < ApplicationRecord
 
   def capacity_left
     accepted_users_count = ride_requests.where('accepted': true).count
-    vehicle.capacity - accepted_users_count
+    vehicle ? vehicle.capacity - accepted_users_count : 0
   end
 end

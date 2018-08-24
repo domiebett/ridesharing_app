@@ -20,9 +20,9 @@
         <div class="info_field">
           <h5>Vehicle Info:</h5>
           <span>
-          <strong>Vehicle model: </strong> <%= @ride.vehicle.vehicle_model %>
+          <strong>Vehicle model: </strong> <%= @ride.vehicle&.vehicle_model %>
             <br>
-          <strong>License plate: </strong> <%= @ride.vehicle.license_plate %>
+          <strong>License plate: </strong> <%= @ride.vehicle&.license_plate %>
         </span>
           </span>
         </div>
@@ -38,7 +38,8 @@
       <div class="links">
         <%= link_to raw("&#8617; Back"), rides_path, class: :btn %>
         <% if current_user == @ride.owner %>
-          <%= link_to raw("<i class='fa fa-pencil'></i> Edit"), edit_ride_path(@ride), class: :btn %>
+          <%= link_to raw("<i class='fa fa-pencil'></i> Edit"),
+                      edit_ride_path(@ride), class: :btn %>
         <% end %>
       </div>
     </div>
