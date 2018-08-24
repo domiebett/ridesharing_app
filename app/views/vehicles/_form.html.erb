@@ -9,7 +9,7 @@
     <%= form.label :vehicle_model %>
     <%= form.text_field :vehicle_model, required: true, autocomplete: :off %>
     <% unless vehicle.errors.messages[:vehicle_model].empty? %>
-      <span class="error_messages">Vehicle model <%= ride.errors.messages[:vehicle_model].join("\n") %></span>
+      <span class="error_messages">Vehicle model <%= vehicle.errors.messages[:vehicle_model].join("\n") %></span>
     <% end %>
   </div>
 
@@ -17,7 +17,7 @@
     <%= form.label :license_plate %>
     <%= form.text_field :license_plate, required: true, autocomplete: :off %>
     <% unless vehicle.errors.messages[:license_plate].empty? %>
-      <span class="error_messages">License plate <%= ride.errors.messages[:license_plate].join("\n") %></span>
+      <span class="error_messages">License plate <%= vehicle.errors.messages[:license_plate].join("\n") %></span>
     <% end %>
   </div>
 
@@ -25,7 +25,7 @@
     <%= form.label :capacity %>
     <%= form.number_field :capacity, required: true %>
     <% unless vehicle.errors.messages[:capacity].empty? %>
-      <span class="error_messages">Capacity <%= ride.errors.messages[:capacity].join("\n") %></span>
+      <span class="error_messages">Capacity <%= vehicle.errors.messages[:capacity].join("\n") %></span>
     <% end %>
   </div>
 
