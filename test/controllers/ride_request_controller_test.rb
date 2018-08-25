@@ -13,6 +13,11 @@ class RideRequestControllerTest < ActionDispatch::IntegrationTest
     @ride_request = ride_requests(:one)
   end
 
+  test 'should get a user\'s ride requests' do
+    get user_requests_path
+    assert_response :success
+  end
+
   test 'should create' do
     assert_difference('RideRequest.count') do
       post new_ride_request_url(ride_id: @ride.id)

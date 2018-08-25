@@ -13,5 +13,4 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get home_index_path
     assert_response :success
   end
-
 end
