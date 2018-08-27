@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :vehicles
   devise_for :users
 
+  get 'filter' => 'home#filter', as: 'home_filter'
+
   controller :history do
     get 'history' => :index, as: 'history_index'
   end

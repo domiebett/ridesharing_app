@@ -12,6 +12,32 @@ $app-green: #16a085;
   padding: 10px;
   width: 100%;
 
+  .inline_field {
+    display: inline-grid;
+    grid-template-columns: 45% 45% 10%;
+    .field:nth-child(2) {
+      margin: 0;
+    }
+
+    .search_button {
+      width: 100%;
+      margin: 0;
+
+      button {
+        margin: 0;
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: $app-blue;
+
+        &:hover {
+          color: white;
+          background: $app-green;
+        }
+      }
+    }
+  }
+
   .home_title {
     float: left;
     width: 50%;
