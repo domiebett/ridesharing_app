@@ -18,6 +18,9 @@ class RidesController < ApplicationController
 
   # GET /rides/new
   def new
+    if current_user.vehicles.empty?
+      redirect_to new_vehicle_path, alert: 'You must have a vehicle to create a ride'
+    end
     @ride = Ride.new
   end
 

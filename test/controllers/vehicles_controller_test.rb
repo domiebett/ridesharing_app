@@ -42,7 +42,7 @@ class VehiclesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update vehicle' do
     patch vehicle_url(@vehicle), params: { vehicle: { capacity: @vehicle.capacity, license_plate: 'EDIT PLATES', vehicle_model: @vehicle.vehicle_model } }
-    assert_response :success
+    assert_redirected_to vehicle_url(Vehicle.last)
   end
 
   test 'should destroy vehicle' do

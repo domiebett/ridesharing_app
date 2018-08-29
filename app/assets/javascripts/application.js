@@ -23,8 +23,6 @@
 //= require bootstrap-select/dist/js/bootstrap-select
 //= require alertifyjs/build/alertify
 
-//= require date_picker
-//= require custom_maps
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
