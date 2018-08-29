@@ -17,6 +17,7 @@ class HomeController < ApplicationController
 
   def fetch_rides
     @rides = Ride.where('departure_date > ?', 1.day.ago)
+                 .where('owner_id != :user_id', user_id: current_user.id)
                  .order(created_at: :desc)
   end
 

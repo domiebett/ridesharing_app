@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :ride_requests, dependent: :destroy
   has_many :requested_rides, through: :ride_requests, class_name: 'Ride', source: :ride
 
+  has_many :notifications, foreign_key: 'recipient_id'
+
   def vehicles_hash
     vehicles_hash = {}
     vehicles.each do |vehicle|

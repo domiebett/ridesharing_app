@@ -11,15 +11,86 @@ $app-dark: #2c3e50;
   position: fixed;
   top: 0;
   right: 0;
-  width: calc(100vw - 80px)
+  width: calc(100vw - 80px);
+  z-index: 500;
 }
 
+.nav_title {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 70% 10% 20%;
+
+  .user {
+    padding: 15px;
+  }
+
+  .notifications_holder {
+    position: relative;
+    z-index: 500;
+    i {
+      position: relative;
+      margin-right: auto;
+      padding: 15px;
+      color: $app-blue;
+      cursor: pointer;
+    }
+
+    .count {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: inline-block;
+      background-color: red;
+      color: white;
+      font-size: 10px;
+      padding: 5px;
+      height: 17px;
+      width: 17px;
+      border-radius: 50%;
+    }
+
+    .notifications {
+      display: none;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 90%;
+      width: 180%;
+      height: auto;
+      max-height: 50vh;
+      overflow-y: scroll;
+      left: -20%;
+      background: white;
+      border: 2px solid $app-blue;
+      border-radius: 5px;
+      z-index: 1000 !important;
+
+      &.show {
+        display: block;
+      }
+
+      li.notification {
+        list-style-type: none;
+        margin: 0 auto;
+        width: 100%;
+        padding: 10px 5%;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.27);
+        background: white;
+        cursor: default;
+
+        &.new {
+          background: $app-blue-transparent;
+        }
+      }
+    }
+  }
+}
 
 .app_title {
-  text-align: center;
-  font-size: 35px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+  text-align: left;
+  font-size: 25px;
+  padding: 10px;
+  margin-bottom: 0;
   color: #222;
   font-family: cursive;
 }

@@ -17,6 +17,10 @@ class RideRequestController < ApplicationController
     create_resource(@ride_request, home_index_url,
                     'Request sent. Await driver confirmation')
 
+    Notification.create(recipient: @ride.owner, actor: current_user,
+                        action: "#{current_user.full_name} requested to join your ride",
+                        path: "/rides/#{@ride.id}", notifiable: @ride)
+
     send_mail(@ride.owner, "/rides/#{@ride.id}", user: current_user)
       .ride_request_sent.deliver_later
   end
@@ -27,6 +31,9 @@ class RideRequestController < ApplicationController
       "#{@ride_request.user.first_name} successfully joined your ride."
     )
 
+    Notification.create(recipient: @ride_request.user, actor: current_user,
+                        action: 'Your ride request was accepted',
+                        path: "/rides/#{@ride.id}", notifiable: @ride)
     send_mail(@ride_request.user, "/rides/#{@ride.id}")
       .ride_request_accepted.deliver_later
   end

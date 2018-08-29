@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   get 'filter' => 'home#filter', as: 'home_filter'
 
+  controller :notifications do
+    get 'notifications' => :index, as: 'notifications'
+    get 'notifications/:id/mark_as_read' => :mark_as_read, as: 'read_notifications'
+  end
+
   controller :history do
     get 'history' => :index, as: 'history_index'
   end
