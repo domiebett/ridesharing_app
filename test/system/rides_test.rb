@@ -2,7 +2,12 @@ require "application_system_test_case"
 
 class RidesTest < ApplicationSystemTestCase
   setup do
+    @user = users(:one)
     @ride = rides(:one)
+
+    visit new_user_session_url
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: 'password'
   end
 
   test "visiting the index" do
